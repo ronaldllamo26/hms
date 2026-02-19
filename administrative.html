@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrative - Hospital Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-hospital-alt text-primary fs-3 me-2"></i>
+                <h4 class="mb-0">Hospital Admin</h4>
+            </div>
+            <button class="btn btn-link sidebar-toggle d-lg-none" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="administrative.html">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Administrative</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="facilities.html">
+                        <i class="fas fa-building"></i>
+                        <span>Facilities Reservation</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="document-management.html">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Document Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="legal-management.html">
+                        <i class="fas fa-gavel"></i>
+                        <span>Legal Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user-management.html">
+                        <i class="fas fa-users"></i>
+                        <span>User Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="visitor-management.html">
+                        <i class="fas fa-id-card"></i>
+                        <span>Visitor Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="approval-management.html">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Approval Management</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D6EFD&color=fff" alt="Admin" class="rounded-circle">
+                <div class="ms-2">
+                    <h6 class="mb-0">Admin User</h6>
+                    <small class="text-muted">Administrator</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+            <div class="container-fluid">
+                <button class="btn btn-link sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="ms-auto d-flex align-items-center">
+                    <!-- Search -->
+                    <form class="d-none d-md-flex me-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <button class="btn btn-outline-secondary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Notifications -->
+                    <div class="dropdown me-3">
+                        <button class="btn btn-link position-relative" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell fs-5"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><h6 class="dropdown-header">Notifications</h6></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle text-primary me-2"></i> New visitor registered</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt text-warning me-2"></i> Document pending approval</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-calendar text-success me-2"></i> Facility booked</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">View all</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="dropdown">
+                        <button class="btn btn-link d-flex align-items-center" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=Admin+User&background=0D6EFD&color=fff" alt="Admin" class="rounded-circle me-2" width="32" height="32">
+                            <span class="d-none d-md-inline">Admin User</span>
+                            <i class="fas fa-chevron-down ms-2"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="content-wrapper">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Administrative</li>
+                </ol>
+            </nav>
+
+            <!-- Page Title -->
+            <div class="page-header mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="page-title">Administrative Management</h2>
+                        <p class="text-muted">Manage hospital administrative tasks and operations</p>
+                    </div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                        <i class="fas fa-plus me-2"></i> New Task
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overview Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted mb-1">Active Tasks</p>
+                                    <h3 class="mb-0">24</h3>
+                                </div>
+                                <div class="stat-icon bg-primary-subtle text-primary">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <small class="text-success"><i class="fas fa-arrow-up me-1"></i> 8% increase</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted mb-1">Departments</p>
+                                    <h3 class="mb-0">12</h3>
+                                </div>
+                                <div class="stat-icon bg-success-subtle text-success">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <small class="text-muted">All operational</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted mb-1">Staff Members</p>
+                                    <h3 class="mb-0">156</h3>
+                                </div>
+                                <div class="stat-icon bg-info-subtle text-info">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <small class="text-info"><i class="fas fa-user-plus me-1"></i> 3 new this week</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <p class="text-muted mb-1">Announcements</p>
+                                    <h3 class="mb-0">8</h3>
+                                </div>
+                                <div class="stat-icon bg-warning-subtle text-warning">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <small class="text-warning"><i class="fas fa-exclamation-circle me-1"></i> 2 urgent</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Overview & Administrative Tasks -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Department Overview</h5>
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-plus me-1"></i> Add Department
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Department</th>
+                                            <th>Head</th>
+                                            <th>Staff</th>
+                                            <th>Budget</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-heartbeat text-danger me-2"></i>
+                                                    <strong>Cardiology</strong>
+                                                </div>
+                                            </td>
+                                            <td>Dr. Sarah Chen</td>
+                                            <td>18</td>
+                                            <td>$450,000</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-brain text-primary me-2"></i>
+                                                    <strong>Neurology</strong>
+                                                </div>
+                                            </td>
+                                            <td>Dr. Michael Wong</td>
+                                            <td>14</td>
+                                            <td>$380,000</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-baby text-info me-2"></i>
+                                                    <strong>Pediatrics</strong>
+                                                </div>
+                                            </td>
+                                            <td>Dr. Emily Martinez</td>
+                                            <td>22</td>
+                                            <td>$520,000</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-procedures text-warning me-2"></i>
+                                                    <strong>Emergency</strong>
+                                                </div>
+                                            </td>
+                                            <td>Dr. James Taylor</td>
+                                            <td>28</td>
+                                            <td>$680,000</td>
+                                            <td><span class="badge bg-success">Active</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-x-ray text-secondary me-2"></i>
+                                                    <strong>Radiology</strong>
+                                                </div>
+                                            </td>
+                                            <td>Dr. Lisa Anderson</td>
+                                            <td>12</td>
+                                            <td>$340,000</td>
+                                            <td><span class="badge bg-warning">Maintenance</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-link"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Administrative Tasks</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="task1">
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <label class="form-check-label mb-0" for="task1">
+                                                <strong>Review monthly budget report</strong>
+                                            </label>
+                                            <p class="mb-0 small text-muted">Due: Today, 5:00 PM</p>
+                                        </div>
+                                        <span class="badge bg-danger">High</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="task2">
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <label class="form-check-label mb-0" for="task2">
+                                                <strong>Approve staff leave requests</strong>
+                                            </label>
+                                            <p class="mb-0 small text-muted">Due: Tomorrow</p>
+                                        </div>
+                                        <span class="badge bg-warning">Medium</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="task3" checked>
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <label class="form-check-label mb-0 text-decoration-line-through text-muted" for="task3">
+                                                Update department schedules
+                                            </label>
+                                            <p class="mb-0 small text-muted">Completed</p>
+                                        </div>
+                                        <span class="badge bg-success">Done</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="task4">
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <label class="form-check-label mb-0" for="task4">
+                                                <strong>Conduct department meetings</strong>
+                                            </label>
+                                            <p class="mb-0 small text-muted">Due: This week</p>
+                                        </div>
+                                        <span class="badge bg-info">Low</span>
+                                    </div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="task5">
+                                        </div>
+                                        <div class="flex-grow-1 ms-2">
+                                            <label class="form-check-label mb-0" for="task5">
+                                                <strong>Review equipment requisitions</strong>
+                                            </label>
+                                            <p class="mb-0 small text-muted">Due: Friday</p>
+                                        </div>
+                                        <span class="badge bg-warning">Medium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Recent Announcements</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="announcement-item mb-3 pb-3 border-bottom">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-sm bg-danger-subtle text-danger rounded">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-1">Emergency Drill - Friday 3PM</h6>
+                                        <p class="text-muted small mb-0">All staff must participate in the quarterly emergency drill.</p>
+                                        <small class="text-muted">Posted 2 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="announcement-item mb-3 pb-3 border-bottom">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-sm bg-info-subtle text-info rounded">
+                                            <i class="fas fa-info-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-1">New Equipment Arrival</h6>
+                                        <p class="text-muted small mb-0">New MRI machine will be installed in Radiology next week.</p>
+                                        <small class="text-muted">Posted 1 day ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="announcement-item">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-sm bg-success-subtle text-success rounded">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-1">Accreditation Approved</h6>
+                                        <p class="text-muted small mb-0">Hospital received 5-year accreditation renewal.</p>
+                                        <small class="text-muted">Posted 3 days ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer bg-white border-top mt-auto py-3">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-0 text-muted">&copy; 2024 Hospital Admin System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0 text-muted">Version 1.0.0</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- New Task Modal -->
+    <div class="modal fade" id="newTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Administrative Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" placeholder="Enter task title">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <select class="form-select">
+                                <option>Select department</option>
+                                <option>Cardiology</option>
+                                <option>Neurology</option>
+                                <option>Pediatrics</option>
+                                <option>Emergency</option>
+                                <option>Radiology</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Task description..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Create Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
